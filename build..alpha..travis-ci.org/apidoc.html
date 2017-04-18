@@ -1,0 +1,1629 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="http://millermedeiros.github.com/js-signals/"
+
+    >signals (v1.0.0)</a>
+</h1>
+<h4>Custom Event/Messaging System</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.signals">module signals</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.signals">
+            function <span class="apidocSignatureSpan"></span>signals
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal">
+            function <span class="apidocSignatureSpan">signals.</span>Signal
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype._addBinding">
+            function <span class="apidocSignatureSpan">signals.</span>Signal.prototype._addBinding
+            <span class="apidocSignatureSpan">(binding)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype._indexOfListener">
+            function <span class="apidocSignatureSpan">signals.</span>Signal.prototype._indexOfListener
+            <span class="apidocSignatureSpan">(listener, context)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype._registerListener">
+            function <span class="apidocSignatureSpan">signals.</span>Signal.prototype._registerListener
+            <span class="apidocSignatureSpan">(listener, isOnce, listenerContext, priority)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype.add">
+            function <span class="apidocSignatureSpan">signals.</span>Signal.prototype.add
+            <span class="apidocSignatureSpan">(listener, listenerContext, priority)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype.addOnce">
+            function <span class="apidocSignatureSpan">signals.</span>Signal.prototype.addOnce
+            <span class="apidocSignatureSpan">(listener, listenerContext, priority)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype.dispatch">
+            function <span class="apidocSignatureSpan">signals.</span>Signal.prototype.dispatch
+            <span class="apidocSignatureSpan">(params)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype.dispose">
+            function <span class="apidocSignatureSpan">signals.</span>Signal.prototype.dispose
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype.forget">
+            function <span class="apidocSignatureSpan">signals.</span>Signal.prototype.forget
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype.getNumListeners">
+            function <span class="apidocSignatureSpan">signals.</span>Signal.prototype.getNumListeners
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype.halt">
+            function <span class="apidocSignatureSpan">signals.</span>Signal.prototype.halt
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype.has">
+            function <span class="apidocSignatureSpan">signals.</span>Signal.prototype.has
+            <span class="apidocSignatureSpan">(listener, context)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype.remove">
+            function <span class="apidocSignatureSpan">signals.</span>Signal.prototype.remove
+            <span class="apidocSignatureSpan">(listener, context)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype.removeAll">
+            function <span class="apidocSignatureSpan">signals.</span>Signal.prototype.removeAll
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype.toString">
+            function <span class="apidocSignatureSpan">signals.</span>Signal.prototype.toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.toString">
+            function <span class="apidocSignatureSpan">signals.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">signals.</span>Signal.prototype</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.signals.Signal">module signals.Signal</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.Signal">
+            function <span class="apidocSignatureSpan">signals.</span>Signal
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.signals.Signal.prototype">module signals.Signal.prototype</a><ol>
+
+        <li>
+
+            <span class="apidocSignatureSpan">boolean <span class="apidocSignatureSpan">signals.Signal.prototype.</span>_shouldPropagate</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">boolean <span class="apidocSignatureSpan">signals.Signal.prototype.</span>active</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">boolean <span class="apidocSignatureSpan">signals.Signal.prototype.</span>memorize</span>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype._addBinding">
+            function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>_addBinding
+            <span class="apidocSignatureSpan">(binding)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype._indexOfListener">
+            function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>_indexOfListener
+            <span class="apidocSignatureSpan">(listener, context)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype._registerListener">
+            function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>_registerListener
+            <span class="apidocSignatureSpan">(listener, isOnce, listenerContext, priority)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype.add">
+            function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>add
+            <span class="apidocSignatureSpan">(listener, listenerContext, priority)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype.addOnce">
+            function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>addOnce
+            <span class="apidocSignatureSpan">(listener, listenerContext, priority)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype.dispatch">
+            function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>dispatch
+            <span class="apidocSignatureSpan">(params)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype.dispose">
+            function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>dispose
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype.forget">
+            function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>forget
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype.getNumListeners">
+            function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>getNumListeners
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype.halt">
+            function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>halt
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype.has">
+            function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>has
+            <span class="apidocSignatureSpan">(listener, context)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype.remove">
+            function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>remove
+            <span class="apidocSignatureSpan">(listener, context)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype.removeAll">
+            function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>removeAll
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype.toString">
+            function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">signals.Signal.prototype.</span>VERSION</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.signals.Signal.prototype._addBinding">module signals.Signal.prototype._addBinding</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype._addBinding._addBinding">
+            function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>_addBinding
+            <span class="apidocSignatureSpan">(binding)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.signals.Signal.prototype._indexOfListener">module signals.Signal.prototype._indexOfListener</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype._indexOfListener._indexOfListener">
+            function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>_indexOfListener
+            <span class="apidocSignatureSpan">(listener, context)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.signals.Signal.prototype._registerListener">module signals.Signal.prototype._registerListener</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype._registerListener._registerListener">
+            function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>_registerListener
+            <span class="apidocSignatureSpan">(listener, isOnce, listenerContext, priority)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.signals.Signal.prototype.add">module signals.Signal.prototype.add</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype.add.add">
+            function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>add
+            <span class="apidocSignatureSpan">(listener, listenerContext, priority)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.signals.Signal.prototype.addOnce">module signals.Signal.prototype.addOnce</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype.addOnce.addOnce">
+            function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>addOnce
+            <span class="apidocSignatureSpan">(listener, listenerContext, priority)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.signals.Signal.prototype.dispatch">module signals.Signal.prototype.dispatch</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype.dispatch.dispatch">
+            function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>dispatch
+            <span class="apidocSignatureSpan">(params)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.signals.Signal.prototype.dispose">module signals.Signal.prototype.dispose</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype.dispose.dispose">
+            function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>dispose
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.signals.Signal.prototype.forget">module signals.Signal.prototype.forget</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype.forget.forget">
+            function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>forget
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.signals.Signal.prototype.getNumListeners">module signals.Signal.prototype.getNumListeners</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype.getNumListeners.getNumListeners">
+            function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>getNumListeners
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.signals.Signal.prototype.halt">module signals.Signal.prototype.halt</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype.halt.halt">
+            function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>halt
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.signals.Signal.prototype.has">module signals.Signal.prototype.has</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype.has.has">
+            function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>has
+            <span class="apidocSignatureSpan">(listener, context)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.signals.Signal.prototype.remove">module signals.Signal.prototype.remove</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype.remove.remove">
+            function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>remove
+            <span class="apidocSignatureSpan">(listener, context)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.signals.Signal.prototype.removeAll">module signals.Signal.prototype.removeAll</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype.removeAll.removeAll">
+            function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>removeAll
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.signals.Signal.prototype.toString">module signals.Signal.prototype.toString</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.Signal.prototype.toString.toString">
+            function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.signals.toString">module signals.toString</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.signals.toString.toString">
+            function <span class="apidocSignatureSpan">signals.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.signals" id="apidoc.module.signals">module signals</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.signals.signals" id="apidoc.element.signals.signals">
+        function <span class="apidocSignatureSpan"></span>signals
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Signal() {
+<span class="apidocCodeCommentSpan">    /**
+     * @type Array.&#x3c;SignalBinding&#x3e;
+     * @private
+     */
+</span>    this._bindings = [];
+    this._prevParams = null;
+
+    // enforce dispatch to aways work on same context (#47)
+    var self = this;
+    this.dispatch = function(){
+        Signal.prototype.dispatch.apply(self, arguments);
+    };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal" id="apidoc.element.signals.Signal">
+        function <span class="apidocSignatureSpan">signals.</span>Signal
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Signal() {
+<span class="apidocCodeCommentSpan">    /**
+     * @type Array.&#x3c;SignalBinding&#x3e;
+     * @private
+     */
+</span>    this._bindings = [];
+    this._prevParams = null;
+
+    // enforce dispatch to aways work on same context (#47)
+    var self = this;
+    this.dispatch = function(){
+        Signal.prototype.dispatch.apply(self, arguments);
+    };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype._addBinding" id="apidoc.element.signals.Signal.prototype._addBinding">
+        function <span class="apidocSignatureSpan">signals.</span>Signal.prototype._addBinding
+        <span class="apidocSignatureSpan">(binding)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Signal.prototype._addBinding = function (binding) {
+    //simplified insertion sort
+    var n = this._bindings.length;
+    do { --n; } while (this._bindings[n] &#x26;&#x26; binding._priority &#x3c;= this._bindings[n]._priority);
+    this._bindings.splice(n + 1, 0, binding);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype._indexOfListener" id="apidoc.element.signals.Signal.prototype._indexOfListener">
+        function <span class="apidocSignatureSpan">signals.</span>Signal.prototype._indexOfListener
+        <span class="apidocSignatureSpan">(listener, context)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Signal.prototype._indexOfListener = function (listener, context) {
+    var n = this._bindings.length,
+        cur;
+    while (n--) {
+        cur = this._bindings[n];
+        if (cur._listener === listener &#x26;&#x26; cur.context === context) {
+            return n;
+        }
+    }
+    return -1;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype._registerListener" id="apidoc.element.signals.Signal.prototype._registerListener">
+        function <span class="apidocSignatureSpan">signals.</span>Signal.prototype._registerListener
+        <span class="apidocSignatureSpan">(listener, isOnce, listenerContext, priority)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Signal.prototype._registerListener = function (listener, isOnce, listenerContext, priority) {
+
+    var prevIndex = this._indexOfListener(listener, listenerContext),
+        binding;
+
+    if (prevIndex !== -1) {
+        binding = this._bindings[prevIndex];
+        if (binding.isOnce() !== isOnce) {
+            throw new Error(&#x27;You cannot add&#x27;+ (isOnce? &#x27;&#x27; : &#x27;Once&#x27;) +&#x27;() then add&#x27;+ (!isOnce? &#x27;&#x27; : &#x27;Once&#x27;) +&#x27;() the same listener
+ without removing the relationship first.&#x27;);
+        }
+    } else {
+        binding = new SignalBinding(this, listener, isOnce, listenerContext, priority);
+        this._addBinding(binding);
+    }
+
+    if(this.memorize &#x26;&#x26; this._prevParams){
+        binding.execute(this._prevParams);
+    }
+
+    return binding;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype.add" id="apidoc.element.signals.Signal.prototype.add">
+        function <span class="apidocSignatureSpan">signals.</span>Signal.prototype.add
+        <span class="apidocSignatureSpan">(listener, listenerContext, priority)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Signal.prototype.add = function (listener, listenerContext, priority) {
+    validateListener(listener, &#x27;add&#x27;);
+    return this._registerListener(listener, false, listenerContext, priority);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype.addOnce" id="apidoc.element.signals.Signal.prototype.addOnce">
+        function <span class="apidocSignatureSpan">signals.</span>Signal.prototype.addOnce
+        <span class="apidocSignatureSpan">(listener, listenerContext, priority)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Signal.prototype.addOnce = function (listener, listenerContext, priority) {
+    validateListener(listener, &#x27;addOnce&#x27;);
+    return this._registerListener(listener, true, listenerContext, priority);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype.dispatch" id="apidoc.element.signals.Signal.prototype.dispatch">
+        function <span class="apidocSignatureSpan">signals.</span>Signal.prototype.dispatch
+        <span class="apidocSignatureSpan">(params)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Signal.prototype.dispatch = function (params) {
+    if (! this.active) {
+        return;
+    }
+
+    var paramsArr = Array.prototype.slice.call(arguments),
+        n = this._bindings.length,
+        bindings;
+
+    if (this.memorize) {
+        this._prevParams = paramsArr;
+    }
+
+    if (! n) {
+        //should come after memorize
+        return;
+    }
+
+    bindings = this._bindings.slice(); //clone array in case add/remove items during dispatch
+    this._shouldPropagate = true; //in case `halt` was called before dispatch or during the previous dispatch.
+
+    //execute all callbacks until end of the list or until a callback returns `false` or stops propagation
+    //reverse loop since listeners with higher priority will be added at the end of the list
+    do { n--; } while (bindings[n] &#x26;&#x26; this._shouldPropagate &#x26;&#x26; bindings[n].execute(paramsArr) !== false);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype.dispose" id="apidoc.element.signals.Signal.prototype.dispose">
+        function <span class="apidocSignatureSpan">signals.</span>Signal.prototype.dispose
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Signal.prototype.dispose = function () {
+    this.removeAll();
+    delete this._bindings;
+    delete this._prevParams;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype.forget" id="apidoc.element.signals.Signal.prototype.forget">
+        function <span class="apidocSignatureSpan">signals.</span>Signal.prototype.forget
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Signal.prototype.forget = function (){
+    this._prevParams = null;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype.getNumListeners" id="apidoc.element.signals.Signal.prototype.getNumListeners">
+        function <span class="apidocSignatureSpan">signals.</span>Signal.prototype.getNumListeners
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Signal.prototype.getNumListeners = function () {
+    return this._bindings.length;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype.halt" id="apidoc.element.signals.Signal.prototype.halt">
+        function <span class="apidocSignatureSpan">signals.</span>Signal.prototype.halt
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Signal.prototype.halt = function () {
+    this._shouldPropagate = false;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype.has" id="apidoc.element.signals.Signal.prototype.has">
+        function <span class="apidocSignatureSpan">signals.</span>Signal.prototype.has
+        <span class="apidocSignatureSpan">(listener, context)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Signal.prototype.has = function (listener, context) {
+    return this._indexOfListener(listener, context) !== -1;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype.remove" id="apidoc.element.signals.Signal.prototype.remove">
+        function <span class="apidocSignatureSpan">signals.</span>Signal.prototype.remove
+        <span class="apidocSignatureSpan">(listener, context)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Signal.prototype.remove = function (listener, context) {
+    validateListener(listener, &#x27;remove&#x27;);
+
+    var i = this._indexOfListener(listener, context);
+    if (i !== -1) {
+        this._bindings[i]._destroy(); //no reason to a SignalBinding exist if it isn&#x27;t attached to a signal
+        this._bindings.splice(i, 1);
+    }
+    return listener;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype.removeAll" id="apidoc.element.signals.Signal.prototype.removeAll">
+        function <span class="apidocSignatureSpan">signals.</span>Signal.prototype.removeAll
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Signal.prototype.removeAll = function () {
+    var n = this._bindings.length;
+    while (n--) {
+        this._bindings[n]._destroy();
+    }
+    this._bindings.length = 0;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype.toString" id="apidoc.element.signals.Signal.prototype.toString">
+        function <span class="apidocSignatureSpan">signals.</span>Signal.prototype.toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Signal.prototype.toString = function () {
+    return &#x27;[Signal active:&#x27;+ this.active +&#x27; numListeners:&#x27;+ this.getNumListeners() +&#x27;]&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.signals.toString" id="apidoc.element.signals.toString">
+        function <span class="apidocSignatureSpan">signals.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+    return text;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.signals.Signal" id="apidoc.module.signals.Signal">module signals.Signal</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.Signal" id="apidoc.element.signals.Signal.Signal">
+        function <span class="apidocSignatureSpan">signals.</span>Signal
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Signal() {
+<span class="apidocCodeCommentSpan">    /**
+     * @type Array.&#x3c;SignalBinding&#x3e;
+     * @private
+     */
+</span>    this._bindings = [];
+    this._prevParams = null;
+
+    // enforce dispatch to aways work on same context (#47)
+    var self = this;
+    this.dispatch = function(){
+        Signal.prototype.dispatch.apply(self, arguments);
+    };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.signals.Signal.prototype" id="apidoc.module.signals.Signal.prototype">module signals.Signal.prototype</a></h1>
+
+
+
+
+
+
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype._addBinding" id="apidoc.element.signals.Signal.prototype._addBinding">
+        function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>_addBinding
+        <span class="apidocSignatureSpan">(binding)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_addBinding = function (binding) {
+    //simplified insertion sort
+    var n = this._bindings.length;
+    do { --n; } while (this._bindings[n] &#x26;&#x26; binding._priority &#x3c;= this._bindings[n]._priority);
+    this._bindings.splice(n + 1, 0, binding);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype._indexOfListener" id="apidoc.element.signals.Signal.prototype._indexOfListener">
+        function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>_indexOfListener
+        <span class="apidocSignatureSpan">(listener, context)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_indexOfListener = function (listener, context) {
+    var n = this._bindings.length,
+        cur;
+    while (n--) {
+        cur = this._bindings[n];
+        if (cur._listener === listener &#x26;&#x26; cur.context === context) {
+            return n;
+        }
+    }
+    return -1;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype._registerListener" id="apidoc.element.signals.Signal.prototype._registerListener">
+        function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>_registerListener
+        <span class="apidocSignatureSpan">(listener, isOnce, listenerContext, priority)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_registerListener = function (listener, isOnce, listenerContext, priority) {
+
+    var prevIndex = this._indexOfListener(listener, listenerContext),
+        binding;
+
+    if (prevIndex !== -1) {
+        binding = this._bindings[prevIndex];
+        if (binding.isOnce() !== isOnce) {
+            throw new Error(&#x27;You cannot add&#x27;+ (isOnce? &#x27;&#x27; : &#x27;Once&#x27;) +&#x27;() then add&#x27;+ (!isOnce? &#x27;&#x27; : &#x27;Once&#x27;) +&#x27;() the same listener
+ without removing the relationship first.&#x27;);
+        }
+    } else {
+        binding = new SignalBinding(this, listener, isOnce, listenerContext, priority);
+        this._addBinding(binding);
+    }
+
+    if(this.memorize &#x26;&#x26; this._prevParams){
+        binding.execute(this._prevParams);
+    }
+
+    return binding;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype.add" id="apidoc.element.signals.Signal.prototype.add">
+        function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>add
+        <span class="apidocSignatureSpan">(listener, listenerContext, priority)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">add = function (listener, listenerContext, priority) {
+    validateListener(listener, &#x27;add&#x27;);
+    return this._registerListener(listener, false, listenerContext, priority);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype.addOnce" id="apidoc.element.signals.Signal.prototype.addOnce">
+        function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>addOnce
+        <span class="apidocSignatureSpan">(listener, listenerContext, priority)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">addOnce = function (listener, listenerContext, priority) {
+    validateListener(listener, &#x27;addOnce&#x27;);
+    return this._registerListener(listener, true, listenerContext, priority);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype.dispatch" id="apidoc.element.signals.Signal.prototype.dispatch">
+        function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>dispatch
+        <span class="apidocSignatureSpan">(params)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">dispatch = function (params) {
+    if (! this.active) {
+        return;
+    }
+
+    var paramsArr = Array.prototype.slice.call(arguments),
+        n = this._bindings.length,
+        bindings;
+
+    if (this.memorize) {
+        this._prevParams = paramsArr;
+    }
+
+    if (! n) {
+        //should come after memorize
+        return;
+    }
+
+    bindings = this._bindings.slice(); //clone array in case add/remove items during dispatch
+    this._shouldPropagate = true; //in case `halt` was called before dispatch or during the previous dispatch.
+
+    //execute all callbacks until end of the list or until a callback returns `false` or stops propagation
+    //reverse loop since listeners with higher priority will be added at the end of the list
+    do { n--; } while (bindings[n] &#x26;&#x26; this._shouldPropagate &#x26;&#x26; bindings[n].execute(paramsArr) !== false);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype.dispose" id="apidoc.element.signals.Signal.prototype.dispose">
+        function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>dispose
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">dispose = function () {
+    this.removeAll();
+    delete this._bindings;
+    delete this._prevParams;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype.forget" id="apidoc.element.signals.Signal.prototype.forget">
+        function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>forget
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">forget = function (){
+    this._prevParams = null;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype.getNumListeners" id="apidoc.element.signals.Signal.prototype.getNumListeners">
+        function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>getNumListeners
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getNumListeners = function () {
+    return this._bindings.length;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype.halt" id="apidoc.element.signals.Signal.prototype.halt">
+        function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>halt
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">halt = function () {
+    this._shouldPropagate = false;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype.has" id="apidoc.element.signals.Signal.prototype.has">
+        function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>has
+        <span class="apidocSignatureSpan">(listener, context)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">has = function (listener, context) {
+    return this._indexOfListener(listener, context) !== -1;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype.remove" id="apidoc.element.signals.Signal.prototype.remove">
+        function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>remove
+        <span class="apidocSignatureSpan">(listener, context)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">remove = function (listener, context) {
+    validateListener(listener, &#x27;remove&#x27;);
+
+    var i = this._indexOfListener(listener, context);
+    if (i !== -1) {
+        this._bindings[i]._destroy(); //no reason to a SignalBinding exist if it isn&#x27;t attached to a signal
+        this._bindings.splice(i, 1);
+    }
+    return listener;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype.removeAll" id="apidoc.element.signals.Signal.prototype.removeAll">
+        function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>removeAll
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">removeAll = function () {
+    var n = this._bindings.length;
+    while (n--) {
+        this._bindings[n]._destroy();
+    }
+    this._bindings.length = 0;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype.toString" id="apidoc.element.signals.Signal.prototype.toString">
+        function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+    return &#x27;[Signal active:&#x27;+ this.active +&#x27; numListeners:&#x27;+ this.getNumListeners() +&#x27;]&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.signals.Signal.prototype._addBinding" id="apidoc.module.signals.Signal.prototype._addBinding">module signals.Signal.prototype._addBinding</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype._addBinding._addBinding" id="apidoc.element.signals.Signal.prototype._addBinding._addBinding">
+        function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>_addBinding
+        <span class="apidocSignatureSpan">(binding)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_addBinding = function (binding) {
+    //simplified insertion sort
+    var n = this._bindings.length;
+    do { --n; } while (this._bindings[n] &#x26;&#x26; binding._priority &#x3c;= this._bindings[n]._priority);
+    this._bindings.splice(n + 1, 0, binding);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.signals.Signal.prototype._indexOfListener" id="apidoc.module.signals.Signal.prototype._indexOfListener">module signals.Signal.prototype._indexOfListener</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype._indexOfListener._indexOfListener" id="apidoc.element.signals.Signal.prototype._indexOfListener._indexOfListener">
+        function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>_indexOfListener
+        <span class="apidocSignatureSpan">(listener, context)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_indexOfListener = function (listener, context) {
+    var n = this._bindings.length,
+        cur;
+    while (n--) {
+        cur = this._bindings[n];
+        if (cur._listener === listener &#x26;&#x26; cur.context === context) {
+            return n;
+        }
+    }
+    return -1;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.signals.Signal.prototype._registerListener" id="apidoc.module.signals.Signal.prototype._registerListener">module signals.Signal.prototype._registerListener</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype._registerListener._registerListener" id="apidoc.element.signals.Signal.prototype._registerListener._registerListener">
+        function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>_registerListener
+        <span class="apidocSignatureSpan">(listener, isOnce, listenerContext, priority)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_registerListener = function (listener, isOnce, listenerContext, priority) {
+
+    var prevIndex = this._indexOfListener(listener, listenerContext),
+        binding;
+
+    if (prevIndex !== -1) {
+        binding = this._bindings[prevIndex];
+        if (binding.isOnce() !== isOnce) {
+            throw new Error(&#x27;You cannot add&#x27;+ (isOnce? &#x27;&#x27; : &#x27;Once&#x27;) +&#x27;() then add&#x27;+ (!isOnce? &#x27;&#x27; : &#x27;Once&#x27;) +&#x27;() the same listener
+ without removing the relationship first.&#x27;);
+        }
+    } else {
+        binding = new SignalBinding(this, listener, isOnce, listenerContext, priority);
+        this._addBinding(binding);
+    }
+
+    if(this.memorize &#x26;&#x26; this._prevParams){
+        binding.execute(this._prevParams);
+    }
+
+    return binding;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.signals.Signal.prototype.add" id="apidoc.module.signals.Signal.prototype.add">module signals.Signal.prototype.add</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype.add.add" id="apidoc.element.signals.Signal.prototype.add.add">
+        function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>add
+        <span class="apidocSignatureSpan">(listener, listenerContext, priority)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">add = function (listener, listenerContext, priority) {
+    validateListener(listener, &#x27;add&#x27;);
+    return this._registerListener(listener, false, listenerContext, priority);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.signals.Signal.prototype.addOnce" id="apidoc.module.signals.Signal.prototype.addOnce">module signals.Signal.prototype.addOnce</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype.addOnce.addOnce" id="apidoc.element.signals.Signal.prototype.addOnce.addOnce">
+        function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>addOnce
+        <span class="apidocSignatureSpan">(listener, listenerContext, priority)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">addOnce = function (listener, listenerContext, priority) {
+    validateListener(listener, &#x27;addOnce&#x27;);
+    return this._registerListener(listener, true, listenerContext, priority);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.signals.Signal.prototype.dispatch" id="apidoc.module.signals.Signal.prototype.dispatch">module signals.Signal.prototype.dispatch</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype.dispatch.dispatch" id="apidoc.element.signals.Signal.prototype.dispatch.dispatch">
+        function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>dispatch
+        <span class="apidocSignatureSpan">(params)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">dispatch = function (params) {
+    if (! this.active) {
+        return;
+    }
+
+    var paramsArr = Array.prototype.slice.call(arguments),
+        n = this._bindings.length,
+        bindings;
+
+    if (this.memorize) {
+        this._prevParams = paramsArr;
+    }
+
+    if (! n) {
+        //should come after memorize
+        return;
+    }
+
+    bindings = this._bindings.slice(); //clone array in case add/remove items during dispatch
+    this._shouldPropagate = true; //in case `halt` was called before dispatch or during the previous dispatch.
+
+    //execute all callbacks until end of the list or until a callback returns `false` or stops propagation
+    //reverse loop since listeners with higher priority will be added at the end of the list
+    do { n--; } while (bindings[n] &#x26;&#x26; this._shouldPropagate &#x26;&#x26; bindings[n].execute(paramsArr) !== false);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.signals.Signal.prototype.dispose" id="apidoc.module.signals.Signal.prototype.dispose">module signals.Signal.prototype.dispose</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype.dispose.dispose" id="apidoc.element.signals.Signal.prototype.dispose.dispose">
+        function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>dispose
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">dispose = function () {
+    this.removeAll();
+    delete this._bindings;
+    delete this._prevParams;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.signals.Signal.prototype.forget" id="apidoc.module.signals.Signal.prototype.forget">module signals.Signal.prototype.forget</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype.forget.forget" id="apidoc.element.signals.Signal.prototype.forget.forget">
+        function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>forget
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">forget = function (){
+    this._prevParams = null;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.signals.Signal.prototype.getNumListeners" id="apidoc.module.signals.Signal.prototype.getNumListeners">module signals.Signal.prototype.getNumListeners</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype.getNumListeners.getNumListeners" id="apidoc.element.signals.Signal.prototype.getNumListeners.getNumListeners">
+        function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>getNumListeners
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getNumListeners = function () {
+    return this._bindings.length;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.signals.Signal.prototype.halt" id="apidoc.module.signals.Signal.prototype.halt">module signals.Signal.prototype.halt</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype.halt.halt" id="apidoc.element.signals.Signal.prototype.halt.halt">
+        function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>halt
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">halt = function () {
+    this._shouldPropagate = false;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.signals.Signal.prototype.has" id="apidoc.module.signals.Signal.prototype.has">module signals.Signal.prototype.has</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype.has.has" id="apidoc.element.signals.Signal.prototype.has.has">
+        function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>has
+        <span class="apidocSignatureSpan">(listener, context)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">has = function (listener, context) {
+    return this._indexOfListener(listener, context) !== -1;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.signals.Signal.prototype.remove" id="apidoc.module.signals.Signal.prototype.remove">module signals.Signal.prototype.remove</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype.remove.remove" id="apidoc.element.signals.Signal.prototype.remove.remove">
+        function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>remove
+        <span class="apidocSignatureSpan">(listener, context)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">remove = function (listener, context) {
+    validateListener(listener, &#x27;remove&#x27;);
+
+    var i = this._indexOfListener(listener, context);
+    if (i !== -1) {
+        this._bindings[i]._destroy(); //no reason to a SignalBinding exist if it isn&#x27;t attached to a signal
+        this._bindings.splice(i, 1);
+    }
+    return listener;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.signals.Signal.prototype.removeAll" id="apidoc.module.signals.Signal.prototype.removeAll">module signals.Signal.prototype.removeAll</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype.removeAll.removeAll" id="apidoc.element.signals.Signal.prototype.removeAll.removeAll">
+        function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>removeAll
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">removeAll = function () {
+    var n = this._bindings.length;
+    while (n--) {
+        this._bindings[n]._destroy();
+    }
+    this._bindings.length = 0;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.signals.Signal.prototype.toString" id="apidoc.module.signals.Signal.prototype.toString">module signals.Signal.prototype.toString</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.signals.Signal.prototype.toString.toString" id="apidoc.element.signals.Signal.prototype.toString.toString">
+        function <span class="apidocSignatureSpan">signals.Signal.prototype.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.signals.toString" id="apidoc.module.signals.toString">module signals.toString</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.signals.toString.toString" id="apidoc.element.signals.toString.toString">
+        function <span class="apidocSignatureSpan">signals.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
