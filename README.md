@@ -1,6 +1,6 @@
 # npmdoc-signals
 
-#### api documentation for  [signals (v1.0.0)](http://millermedeiros.github.com/js-signals/)  [![npm package](https://img.shields.io/npm/v/npmdoc-signals.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-signals) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-signals.svg)](https://travis-ci.org/npmdoc/node-npmdoc-signals)
+#### basic api documentation for  [signals (v1.0.0)](http://millermedeiros.github.com/js-signals/)  [![npm package](https://img.shields.io/npm/v/npmdoc-signals.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-signals) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-signals.svg)](https://travis-ci.org/npmdoc/node-npmdoc-signals)
 
 #### Custom Event/Messaging System
 
@@ -66,7 +66,8 @@
         "type": "git",
         "url": "git+https://github.com/millermedeiros/js-signals.git"
     },
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "bin": {}
 }
 ```
 
